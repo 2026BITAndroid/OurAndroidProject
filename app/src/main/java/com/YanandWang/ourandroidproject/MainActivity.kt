@@ -1,10 +1,12 @@
 package com.YanandWang.ourandroidproject
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.content.Intent
 
 /**
  * 2026.3.14
@@ -17,6 +19,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+        var btnGoToSelectAvatar = findViewById<Button>(R.id.btnGoToSelectAvatar)
+        btnGoToSelectAvatar.setOnClickListener {
+            val intent = Intent(this, AvatarActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }
