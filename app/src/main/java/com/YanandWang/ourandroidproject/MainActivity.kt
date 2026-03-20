@@ -13,6 +13,9 @@ import android.content.Intent
  * 项目创建
  * 作者：闫俊卓 王希文
  * 希望一切顺利，做出一个好玩的软件
+ *
+ * 2026.3.18
+ * 项目推进中…接代码不报错，接测试一遍过，希望每天都机魂大悦，orz
  */
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
