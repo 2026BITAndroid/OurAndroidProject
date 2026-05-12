@@ -5,11 +5,7 @@ plugins {
 
 android {
     namespace = "com.YanandWang.ourandroidproject"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.YanandWang.ourandroidproject"
@@ -39,6 +35,7 @@ android {
     }
 }
 
+// 👇 所有依赖必须放在这里面！
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -57,4 +54,8 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     implementation("androidx.navigation:navigation-compose:2.8.3")
     implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+    implementation("com.google.code.gson:gson:2.10.1")
+
 }
