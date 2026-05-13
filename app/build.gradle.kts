@@ -33,6 +33,17 @@ android {
     buildFeatures {
         compose = true
     }
+
+    // ✅ 新增：解决JavaMail依赖的META-INF文件冲突
+    packaging {
+        resources {
+            excludes += listOf(
+                "META-INF/NOTICE.md",
+                "META-INF/LICENSE.md",
+                "META-INF/DEPENDENCIES"
+            )
+        }
+    }
 }
 
 // 👇 所有依赖必须放在这里面！
@@ -57,5 +68,8 @@ dependencies {
     implementation("androidx.security:security-crypto:1.1.0-alpha06")
     implementation("androidx.work:work-runtime-ktx:2.9.0")
     implementation("com.google.code.gson:gson:2.10.1")
-
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+    implementation("com.sun.mail:android-mail:1.6.7")
+    implementation("com.sun.mail:android-activation:1.6.7")
+    implementation("androidx.exifinterface:exifinterface:1.3.7")
 }
