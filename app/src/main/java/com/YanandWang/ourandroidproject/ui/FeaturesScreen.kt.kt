@@ -12,8 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun MainScreen(
-    onGoToAvatar: () -> Unit,
+fun FeaturesScreen(
     onGoToTimeCapsule: () -> Unit
 ) {
     Column(
@@ -21,13 +20,6 @@ fun MainScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Button(
-            onClick = onGoToAvatar,
-            modifier = Modifier.padding(8.dp)
-        ) {
-            Text("头像选择")
-        }
-
         Button(
             onClick = onGoToTimeCapsule,
             modifier = Modifier.padding(8.dp)
