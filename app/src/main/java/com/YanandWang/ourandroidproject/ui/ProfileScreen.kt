@@ -346,9 +346,12 @@ fun ProfileScreen() {
                 title = { Text("项目介绍") },
                 text = {
                     Text(
-                        "这是由Yan和Wang两位开发者共同开发的时间胶囊App。\n\n" +
-                                "我们希望通过这个App，让你能够给未来的自己留下一段珍贵的回忆。\n\n" +
-                                "写下你现在的心情、愿望或者想说的话，设定一个时间，到了那天它就会准时送达。\n\n" +
+                        "这是由Yan和Wang两位开发者共同开发的app——素造星盒。\n\n" +
+                                "希望它能给此刻的你带来一点乐趣，给未来的你带去一些回忆！\n\n" +
+                                "在这里，你可以写下你的心情、愿望、想说的话，设定一个时间，到了那天它就会准时送达~\n\n" +
+                                "在这里，你可以通过几个小问题“吾日三省吾身”\n\n" +
+                                "在这里，你可以监测自己的睡眠，更好地规划自己的时间安排~\n\n" +
+                                "还有更多有趣的功能等待你发掘！\n\n" +
                                 "感谢你的使用！"
                     )
                 },
@@ -384,7 +387,7 @@ fun ProfileScreen() {
                                 modifier = Modifier.weight(1f)
                             ) {
                                 Text(
-                                    "开发者Yan",
+                                    "开发者Yan 各种神秘bug的创造者 誓死保卫自己的头发",
                                     color = if (selectedDev == "Yan")
                                         MaterialTheme.colorScheme.primary
                                     else
@@ -396,7 +399,7 @@ fun ProfileScreen() {
                                 modifier = Modifier.weight(1f)
                             ) {
                                 Text(
-                                    "开发者Wang",
+                                    "开发者Wang 各种离谱功能设计均来自于现实需求",
                                     color = if (selectedDev == "Wang")
                                         MaterialTheme.colorScheme.primary
                                     else

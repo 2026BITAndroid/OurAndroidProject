@@ -22,7 +22,7 @@ object EmailSender {
     private const val SENDER_EMAIL = "androidyanandwang@163.com"
     private const val SENDER_PASSWORD = "KTUSZSgMXGJX8uQH"
     private const val RECEIVER_EMAIL_YAN = "3182219477@qq.com"
-    private const val RECEIVER_EMAIL_WANG = "wang@example.com"
+    private const val RECEIVER_EMAIL_WANG = "wxw_meow@outlook.com"
     // ========================================================
 
     private const val APP_VERSION_NAME = "1.0"
