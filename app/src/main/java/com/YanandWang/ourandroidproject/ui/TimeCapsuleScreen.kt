@@ -34,7 +34,9 @@ import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
-
+/**
+ * 此页面为时间胶囊实体
+ */
 // 时间胶囊实体
 data class TimeCapsule(
     val id: String = UUID.randomUUID().toString(),
