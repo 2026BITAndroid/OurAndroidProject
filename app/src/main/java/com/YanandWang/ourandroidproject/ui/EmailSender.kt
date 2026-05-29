@@ -14,7 +14,9 @@ import javax.mail.Session
 import javax.mail.Transport
 import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
-
+/**
+ * 此页面作是吐槽功能
+ */
 object EmailSender {
     private const val TAG = "EmailSender"
 

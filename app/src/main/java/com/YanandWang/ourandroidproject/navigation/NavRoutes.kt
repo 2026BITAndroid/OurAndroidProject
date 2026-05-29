@@ -9,4 +9,6 @@ object NavRoutes {
     const val CONFESSION = "confession"
 
     const val CONFESSION_HISTORY = "confession_history"
+    const val LUCK_DRAW = "luck_draw"
+    const val LUCK_DRAW_RESULT = "luck_draw_result/{category}"
 }

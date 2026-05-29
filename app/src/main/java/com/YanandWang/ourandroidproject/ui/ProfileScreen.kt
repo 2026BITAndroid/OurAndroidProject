@@ -66,7 +66,9 @@ import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-
+/**
+ * 此页面为个人页面
+ */
 // SharedPreferences 常量
 private const val PREFS_NAME = "user_prefs"
 private const val KEY_AVATAR_PATH = "avatar_file_path"
