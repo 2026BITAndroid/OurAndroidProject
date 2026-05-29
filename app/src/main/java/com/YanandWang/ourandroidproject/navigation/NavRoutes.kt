@@ -5,4 +5,8 @@ object NavRoutes {
     const val FEATURES = "features"
     const val PROFILE = "profile"
     const val TIME_CAPSULE = "time_capsule"
+
+    const val CONFESSION = "confession"
+
+    const val CONFESSION_HISTORY = "confession_history"
 }

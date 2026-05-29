@@ -19,6 +19,8 @@ import com.YanandWang.ourandroidproject.ui.SplashScreen
 import com.YanandWang.ourandroidproject.ui.FeaturesScreen
 import com.YanandWang.ourandroidproject.ui.ProfileScreen
 import com.YanandWang.ourandroidproject.ui.TimeCapsuleScreen
+// 新增忏悔录
+import com.YanandWang.ourandroidproject.ui.confession.ConfessionScreen
 
 @Composable
 fun AppNavigation() {
@@ -66,12 +68,23 @@ fun AppNavigation() {
             }
 
             composable(NavRoutes.FEATURES) {
-                FeaturesScreen(onGoToTimeCapsule = { navController.navigate(NavRoutes.TIME_CAPSULE) })
+                FeaturesScreen(
+                    onGoToTimeCapsule = { navController.navigate(NavRoutes.TIME_CAPSULE) },
+                    // 新增忏悔录
+                    onGoToConfession = { navController.navigate(NavRoutes.CONFESSION) },
+                    onGoToConfessionHistory = { navController.navigate(NavRoutes.CONFESSION_HISTORY) }
+                )
             }
 
             composable(NavRoutes.PROFILE) { ProfileScreen() }
 
             composable(NavRoutes.TIME_CAPSULE) { TimeCapsuleScreen(navController = navController) }
+
+            // 新增忏悔录
+            composable(NavRoutes.CONFESSION) {
+                ConfessionScreen(onBack = { navController.popBackStack() })
+            }
+
         }
     }
 }
