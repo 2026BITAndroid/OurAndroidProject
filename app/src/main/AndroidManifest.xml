@@ -44,6 +44,16 @@
                 android:value="androidx.startup" />
         </provider>
 
+        <!-- 新增：屏幕亮灭广播接收器 睡了么 -->
+        <receiver
+            android:name=".ui.sleep.ScreenBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.SCREEN_OFF"/>
+                <action android:name="android.intent.action.SCREEN_ON"/>
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

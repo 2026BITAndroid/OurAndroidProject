@@ -72,4 +72,9 @@ dependencies {
     implementation("com.sun.mail:android-mail:1.6.7")
     implementation("com.sun.mail:android-activation:1.6.7")
     implementation("androidx.exifinterface:exifinterface:1.3.7")
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    // 改用 annotationProcessor（Java编译，和内置Kotlin无冲突）
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
 }

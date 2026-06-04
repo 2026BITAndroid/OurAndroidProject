@@ -38,6 +38,7 @@ import com.YanandWang.ourandroidproject.ui.confession.ConfessionScreen
 // 新增：事前一签页面导入
 import com.YanandWang.ourandroidproject.ui.luckdraw.LuckDrawScreen
 import com.YanandWang.ourandroidproject.ui.luckdraw.LuckDrawResultScreen
+import com.YanandWang.ourandroidproject.ui.sleep.SleepScreen
 
 @Composable
 fun AppNavigation() {
@@ -107,10 +108,10 @@ fun AppNavigation() {
 
                     composable(NavRoutes.FEATURES) {
                         FeaturesScreen(
+                            navController = navController,
                             onGoToTimeCapsule = { navController.navigate(NavRoutes.TIME_CAPSULE) },
                             onGoToConfession = { navController.navigate(NavRoutes.CONFESSION) },
                             onGoToConfessionHistory = { navController.navigate(NavRoutes.CONFESSION_HISTORY) },
-                            // 新增：事前一签入口
                             onGoToLuckDraw = { navController.navigate(NavRoutes.LUCK_DRAW) }
                         )
                     }
@@ -143,6 +144,10 @@ fun AppNavigation() {
                                 popUpTo(NavRoutes.LUCK_DRAW_RESULT) { inclusive = true }
                             } }
                         )
+                    }
+
+                    composable(NavRoutes.SleepPage) {
+                        SleepScreen()
                     }
                 }
             }
