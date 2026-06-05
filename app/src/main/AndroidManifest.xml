@@ -5,15 +5,24 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
-    <!-- WorkManager定时任务权限（时间胶囊功能需要） -->
+    <!-- WorkManager 定时任务权限（时间胶囊） -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
-    <!-- ✅ 新增：Android 11+ 访问邮件应用所需的查询声明 -->
+    <!-- 网络权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <queries>
 
+    <!-- ====================== 睡眠功能所需权限 ====================== -->
+    <!-- 前台服务基础权限（Android 9+） -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" android:minSdkVersion="28" />
+    <!-- 特殊用途前台服务权限（Android 14+，用于后台持续监听屏幕状态） -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" android:minSdkVersion="34" />
+    <!-- 悬浮窗权限（Android 14+前台服务必需） -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- ================================================================== -->
+
+    <queries>
     </queries>
 
     <application
@@ -33,7 +42,7 @@
             </intent-filter>
         </activity>
 
-        <!-- WorkManager初始化配置（时间胶囊功能需要） -->
+        <!-- WorkManager 初始化配置 -->
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="${applicationId}.androidx-startup"
@@ -44,15 +53,16 @@
                 android:value="androidx.startup" />
         </provider>
 
-        <!-- 新增：屏幕亮灭广播接收器 睡了么 -->
+        <!-- 屏幕状态广播接收器（动态注册，清单声明用于系统组件识别） -->
         <receiver
-            android:name=".ui.sleep.ScreenBroadcastReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.SCREEN_OFF"/>
-                <action android:name="android.intent.action.SCREEN_ON"/>
-            </intent-filter>
-        </receiver>
+            android:name=".ui.sleep.ScreenStateReceiver"
+            android:exported="false" />
+
+        <!-- 睡眠监测前台服务（Android 14+必需声明foregroundServiceType） -->
+        <service
+            android:name=".ui.sleep.SleepMonitorService"
+            android:foregroundServiceType="specialUse"
+            android:exported="false" />
 
     </application>
 
