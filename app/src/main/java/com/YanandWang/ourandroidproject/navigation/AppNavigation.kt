@@ -147,7 +147,7 @@ fun AppNavigation() {
                     }
 
                     composable(NavRoutes.SleepPage) {
-                        SleepScreen()
+                        SleepScreen(navController = navController)
                     }
                 }
             }
