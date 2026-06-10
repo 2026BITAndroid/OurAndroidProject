@@ -13,4 +13,7 @@ object NavRoutes {
     const val LUCK_DRAW_RESULT = "luck_draw_result/{category}"
 
     const val SleepPage = "sleep_screen"
+
+    const val HABIT = "habit"
+    const val DIARY = "diary"
 }
