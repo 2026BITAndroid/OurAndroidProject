@@ -35,11 +35,11 @@ import com.YanandWang.ourandroidproject.ui.FeaturesScreen
 import com.YanandWang.ourandroidproject.ui.ProfileScreen
 import com.YanandWang.ourandroidproject.ui.TimeCapsuleScreen
 import com.YanandWang.ourandroidproject.ui.confession.ConfessionScreen
-// 新增：事前一签页面导入
 import com.YanandWang.ourandroidproject.ui.luckdraw.LuckDrawScreen
 import com.YanandWang.ourandroidproject.ui.luckdraw.LuckDrawResultScreen
 import com.YanandWang.ourandroidproject.ui.sleep.SleepScreen
-
+import com.YanandWang.ourandroidproject.ui.habit.HabitScreen
+import com.YanandWang.ourandroidproject.ui.diary.DiaryScreen
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()
@@ -148,6 +148,12 @@ fun AppNavigation() {
 
                     composable(NavRoutes.SleepPage) {
                         SleepScreen(navController = navController)
+                    }
+                    composable(NavRoutes.HABIT) {
+                        HabitScreen(onBack = { navController.popBackStack() })
+                    }
+                    composable(NavRoutes.DIARY) {
+                        DiaryScreen(onBack = { navController.popBackStack() })
                     }
                 }
             }

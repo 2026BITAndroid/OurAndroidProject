@@ -64,5 +64,18 @@ fun FeaturesScreen(
         ) {
             Text("睡了么 · 睡眠统计")
         }
+        Button(
+            onClick = { navController.navigate(NavRoutes.HABIT) },
+            modifier = Modifier.padding(8.dp)
+        ) {
+            Text("习惯打卡")
+        }
+        Button(
+            onClick = { navController.navigate(NavRoutes.DIARY) },
+            modifier = Modifier.padding(8.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+        ) {
+            Text("情绪日记本", color = Color.White)
+        }
     }
 }
