@@ -77,5 +77,8 @@ fun FeaturesScreen(
         ) {
             Text("情绪日记本", color = Color.White)
         }
+        Button(onClick = { navController.navigate("dodgeBall") }) {
+            Text("躲避小球")
+        }
     }
 }

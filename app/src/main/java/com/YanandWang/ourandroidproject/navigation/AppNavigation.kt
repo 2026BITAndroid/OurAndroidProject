@@ -40,6 +40,7 @@ import com.YanandWang.ourandroidproject.ui.luckdraw.LuckDrawResultScreen
 import com.YanandWang.ourandroidproject.ui.sleep.SleepScreen
 import com.YanandWang.ourandroidproject.ui.habit.HabitScreen
 import com.YanandWang.ourandroidproject.ui.diary.DiaryScreen
+import com.YanandWang.ourandroidproject.game.DodgeBallGameScreen
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()
@@ -154,6 +155,9 @@ fun AppNavigation() {
                     }
                     composable(NavRoutes.DIARY) {
                         DiaryScreen(onBack = { navController.popBackStack() })
+                    }
+                    composable("dodgeBall") {
+                        DodgeBallGameScreen()
                     }
                 }
             }
