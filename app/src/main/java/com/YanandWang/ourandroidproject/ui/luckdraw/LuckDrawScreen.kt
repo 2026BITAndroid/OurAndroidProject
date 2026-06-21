@@ -51,7 +51,7 @@ fun LuckDrawScreen(
     onBack: () -> Unit,
     onSelectCategory: (String) -> Unit
 ) {
-    // 抽签类别列表（保留原来的颜色配置，用于按钮颜色）
+    // 抽签类别列表
     val categories = listOf(
         "学业" to Color(0xFF2196F3),
         "游戏" to Color(0xFF4CAF50),
@@ -206,8 +206,7 @@ fun WheelItem(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                // 背景图片 - 请替换这里的图片资源ID
-                // 你可以为每个类别设置不同的图片，或者使用统一的背景图
+                // 背景图片
                 val imageResId = when (category) {
                     "学业" -> R.drawable.bg_study // 学业背景图
                     "游戏" -> R.drawable.bg_game  // 游戏背景图
@@ -222,15 +221,15 @@ fun WheelItem(
                     contentDescription = null,
                     modifier = Modifier
                         .fillMaxSize()
-                        .clip(RoundedCornerShape(16.dp)), // 保持圆角
-                    contentScale = ContentScale.Crop // 裁剪填充，保持图片比例
+                        .clip(RoundedCornerShape(16.dp)),
+                    contentScale = ContentScale.Crop
                 )
 
-                // 可选：添加半透明遮罩，让文字更清晰
+                // 添加半透明遮罩，让文字更清晰
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(color.copy(alpha = 0.3f)) // 使用原颜色作为半透明遮罩
+                        .background(color.copy(alpha = 0.3f))
                         .clip(RoundedCornerShape(16.dp))
                 )
 

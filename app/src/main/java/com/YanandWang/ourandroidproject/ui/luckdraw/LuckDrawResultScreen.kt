@@ -167,7 +167,7 @@ fun LuckDrawResultScreen(
 
 /**
  * 根据类别随机获取结果
- * 👉 在这里添加你的签池内容！
+
  */
 fun getRandomResult(category: String): String {
     return when (category) {

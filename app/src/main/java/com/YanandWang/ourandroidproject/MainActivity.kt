@@ -45,7 +45,6 @@ class MainActivity : ComponentActivity() {
     // 检查权限并启动睡眠服务
     private fun checkAndStartSleepService() {
         when {
-            // Android 14+：需要悬浮窗权限才能让前台服务长期运行
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this) -> {
                 val intent = Intent(
                     Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
@@ -53,7 +52,6 @@ class MainActivity : ComponentActivity() {
                 )
                 startActivityForResult(intent, REQUEST_OVERLAY_PERMISSION)
             }
-            // 权限已授予，直接启动服务
             else -> {
                 SleepMonitorService.start(this)
             }

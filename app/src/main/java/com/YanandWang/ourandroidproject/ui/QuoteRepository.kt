@@ -2,10 +2,9 @@ package com.YanandWang.ourandroidproject.ui
 
 /**
  * 名言/文艺句子库
- * 所有名言都集中在这里管理，添加新句子只需在此文件中修改
+ * 所有名言都集中在这里管理
  */
 object QuoteRepository {
-    // 在这里添加或删除名言，每行一个字符串，末尾加逗号
     val quotes = listOf(
         "风渐软。",
         "春已归。",

@@ -88,7 +88,7 @@ fun AppNavigation() {
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            // 页面内容区域（占满剩余空间）
+            // 页面内容区域
             Box(
                 modifier = Modifier
                     .weight(1f)
@@ -125,7 +125,6 @@ fun AppNavigation() {
                         ConfessionScreen(onBack = { navController.popBackStack() })
                     }
 
-                    // 新增：事前一签页面
                     composable(NavRoutes.LUCK_DRAW) {
                         LuckDrawScreen(
                             onBack = { navController.popBackStack() },
@@ -135,7 +134,6 @@ fun AppNavigation() {
                         )
                     }
 
-                    // 新增：事前一签结果页面
                     composable(NavRoutes.LUCK_DRAW_RESULT) { backStackEntry ->
                         val category = backStackEntry.arguments?.getString("category") ?: "学业"
                         LuckDrawResultScreen(
@@ -162,7 +160,7 @@ fun AppNavigation() {
                 }
             }
 
-            // 名言区域：紧挨着底部导航栏上方
+            // 名言区域
             if (showBottomBar) {
                 Card(
                     modifier = Modifier
