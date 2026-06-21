@@ -7,7 +7,6 @@ data class ConfessionQuestion(
 
 object ConfessionBank {
     val questions = listOf(
-        // 生活习惯类（诙谐口语版）
         ConfessionQuestion(
             "今天熬大夜了吗？",
             listOf("早睡达人，准时躺平", "稍微晚睡了一小会儿", "通宵，悔不当初！")

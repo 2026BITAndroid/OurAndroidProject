@@ -17,7 +17,6 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 
 class HabitRepository(private val context: Context) {
     private val HABITS_KEY = stringPreferencesKey("habits_list")
-    // 修复：注册所有Java 8日期时间类型的序列化/反序列化适配器
     private val gson = Converters.registerAll(GsonBuilder()).create()
 
     val habitsFlow: Flow<List<Habit>> = context.dataStore.data
@@ -38,18 +37,20 @@ class HabitRepository(private val context: Context) {
         val yesterday = today.minusDays(1)
 
         return when (habit.lastCheckInDate) {
-            today -> habit // 今天已打卡，不重复
+            today -> habit
             yesterday -> habit.copy(
                 totalDays = habit.totalDays + 1,
                 currentStreak = habit.currentStreak + 1,
                 maxStreak = maxOf(habit.maxStreak, habit.currentStreak + 1),
-                lastCheckInDate = today
+                lastCheckInDate = today,
+                checkInDates = habit.checkInDates + today // 同步记录打卡日期
             )
             else -> habit.copy(
                 totalDays = habit.totalDays + 1,
                 currentStreak = 1,
                 maxStreak = maxOf(habit.maxStreak, 1),
-                lastCheckInDate = today
+                lastCheckInDate = today,
+                checkInDates = habit.checkInDates + today // 同步记录打卡日期
             )
         }
     }

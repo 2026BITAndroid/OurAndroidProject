@@ -74,7 +74,7 @@ private const val PREFS_NAME = "user_prefs"
 private const val KEY_AVATAR_PATH = "avatar_file_path"
 private const val KEY_SIGNATURE_PATH = "signature_file_path"
 
-// 签名显示区域尺寸（全局统一，手写板和显示区域完全一致）
+// 签名显示区域尺寸
 private const val SIGNATURE_DISPLAY_HEIGHT_DP = 120
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -83,7 +83,6 @@ fun ProfileScreen() {
     val context = LocalContext.current
     val sharedPrefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
-    // ✅ 头像改为使用 Uri 状态，兼容 AvatarScreen 风格
     var imageUri by remember { mutableStateOf<Uri?>(null) }
     var signatureBitmap by remember { mutableStateOf<ImageBitmap?>(null) }
     var showSignatureDialog by remember { mutableStateOf(false) }
@@ -92,7 +91,7 @@ fun ProfileScreen() {
 
     // 从本地存储加载头像和签名
     LaunchedEffect(Unit) {
-        // 加载头像（从文件路径转换为 Uri）
+        // 加载头像
         sharedPrefs.getString(KEY_AVATAR_PATH, null)?.let { filePath ->
             val file = File(filePath)
             if (file.exists()) {
@@ -109,7 +108,7 @@ fun ProfileScreen() {
         }
     }
 
-    // ✅ 头像永久保存：复制到应用内部存储，并更新 Uri 状态
+    //头像永久保存：复制到应用内部存储，并更新 Uri 状态
     fun saveAvatar(uri: Uri) {
         try {
             val inputStream: InputStream? = context.contentResolver.openInputStream(uri)
@@ -162,7 +161,7 @@ fun ProfileScreen() {
         showFeedbackDialog = false
     }
 
-    // ---------- 头像选择逻辑（已替换为 AvatarScreen 风格）----------
+    //头像选择逻辑
     val pickImage = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri ->
@@ -266,7 +265,7 @@ fun ProfileScreen() {
             onClick = { showFeedbackDialog = true }
         )
 
-        // 手写签名编辑对话框（尺寸与显示区域完全一致）
+        // 手写签名编辑对话框
         if (showSignatureDialog) {
             var currentPaths by remember { mutableStateOf(emptyList<List<Offset>>()) }
 

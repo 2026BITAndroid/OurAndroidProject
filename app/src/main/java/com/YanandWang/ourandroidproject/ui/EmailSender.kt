@@ -20,12 +20,10 @@ import javax.mail.internet.MimeMessage
 object EmailSender {
     private const val TAG = "EmailSender"
 
-    // ====================== 必须修改这4行 ======================
     private const val SENDER_EMAIL = "androidyanandwang@163.com"
     private const val SENDER_PASSWORD = "KTUSZSgMXGJX8uQH"
     private const val RECEIVER_EMAIL_YAN = "3182219477@qq.com"
     private const val RECEIVER_EMAIL_WANG = "wxw_meow@outlook.com"
-    // ========================================================
 
     private const val APP_VERSION_NAME = "1.0"
     private const val APP_VERSION_CODE = 1
@@ -50,7 +48,7 @@ object EmailSender {
                 if (isSuccess) break
                 if (attempt < 3) delay(3000) // 延长重试间隔到3秒
             }
-            Log.d(TAG, if (isSuccess) "✅ 邮件最终发送成功" else "❌ 3次尝试全部失败")
+            Log.d(TAG, if (isSuccess) " 邮件最终发送成功" else " 3次尝试全部失败")
         }
     }
 
@@ -64,7 +62,6 @@ object EmailSender {
                 else -> RECEIVER_EMAIL_YAN
             }
 
-            // ✅ 终极TLS兼容配置（专门解决移动网络超时问题）
             val props = Properties()
             props["mail.smtp.host"] = SMTP_HOST
             props["mail.smtp.port"] = SMTP_PORT
@@ -72,9 +69,9 @@ object EmailSender {
             props["mail.smtp.ssl.enable"] = "true"
             props["mail.smtp.ssl.protocols"] = "TLSv1.2 TLSv1.3"
             props["mail.smtp.ssl.enabledProtocols"] = "TLSv1.2 TLSv1.3"
-            // 🔥 关键：指定加密套件，解决163服务器握手不响应问题
+            // 指定加密套件，解决163服务器握手不响应问题
             props["mail.smtp.ssl.ciphersuites"] = "TLS_AES_128_GCM_SHA256 TLS_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
-            // 🔥 关键：禁用SSL回退，强制使用现代TLS
+            // 禁用SSL回退，强制使用现代TLS
             props["mail.smtp.ssl.allowlegacy"] = "false"
             props["mail.smtp.starttls.required"] = "false"
             // 延长所有超时时间到45秒
@@ -109,17 +106,17 @@ object EmailSender {
                 )
             }
 
-            // 🔥 关键：手动连接并发送，替代静态方法
+            // 手动连接并发送，替代静态方法
             val transport = session.getTransport("smtp")
             transport.connect(SMTP_HOST, SENDER_EMAIL, SENDER_PASSWORD)
             transport.sendMessage(message, message.allRecipients)
             transport.close()
 
-            Log.d(TAG, "✅ 163邮件发送成功！")
+            Log.d(TAG, " 163邮件发送成功！")
             true
 
         } catch (e: Exception) {
-            Log.e(TAG, "❌ 163邮件发送失败", e)
+            Log.e(TAG, " 163邮件发送失败", e)
             false
         }
     }

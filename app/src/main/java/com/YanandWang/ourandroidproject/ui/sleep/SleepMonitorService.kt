@@ -55,7 +55,7 @@ class SleepMonitorService : Service() {
         }
     }
 
-    // 彻底修复：使用应用默认图标+非链式调用
+
     private fun buildNotification(): Notification {
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
@@ -67,11 +67,11 @@ class SleepMonitorService : Service() {
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
 
-        // 使用应用自带的启动图标，100%不会找不到
+
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
         builder.setContentTitle("睡眠监测中")
         builder.setContentText("正在后台记录您的睡眠数据")
-        builder.setSmallIcon(R.mipmap.ic_launcher) // 应用默认图标
+        builder.setSmallIcon(R.mipmap.ic_launcher)
         builder.setContentIntent(pendingIntent)
         builder.setPriority(NotificationCompat.PRIORITY_LOW)
         builder.setOngoing(true)

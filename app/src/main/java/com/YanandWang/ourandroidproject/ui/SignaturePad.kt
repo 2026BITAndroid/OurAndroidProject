@@ -18,7 +18,6 @@ import androidx.compose.ui.input.pointer.pointerInput
 
 /**
  * 手写签名板组件
- * @param onSignatureChanged 当签名内容变化时回调，返回所有绘制路径
  */
 @Composable
 fun SignaturePad(
@@ -27,7 +26,7 @@ fun SignaturePad(
     strokeColor: Color = Color.Black,
     strokeWidth: Float = 8f
 ) {
-    // 存储所有绘制的路径（每条路径是一个点的列表）
+    // 存储所有绘制的路径
     var paths by remember { mutableStateOf(emptyList<List<Offset>>()) }
     // 当前正在绘制的路径
     var currentPath by remember { mutableStateOf(emptyList<Offset>()) }

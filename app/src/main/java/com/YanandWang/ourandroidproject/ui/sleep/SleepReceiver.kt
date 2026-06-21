@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class ScreenStateReceiver(private val sleepManager: SleepManager) : BroadcastReceiver() {
 
     companion object {
-        // 注册广播（代码动态注册，清单里不能写）
+        // 注册广播
         fun register(ctx: Context, manager: SleepManager): ScreenStateReceiver {
             val receiver = ScreenStateReceiver(manager)
             val filter = IntentFilter().apply {

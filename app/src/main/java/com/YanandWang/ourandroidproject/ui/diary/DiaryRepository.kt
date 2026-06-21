@@ -76,7 +76,6 @@ class DiaryRepository(private val context: Context) {
     // 保存到DataStore
     private suspend fun saveDiaries(diaries: List<DiaryEntry>) {
         val json = Json.encodeToString(diaries)
-        // ✅ 修正：移除已删除的MutablePreferences，直接使用自动推断类型
         context.dataStore.edit { preferences ->
             preferences[DIARY_KEY] = json
         }

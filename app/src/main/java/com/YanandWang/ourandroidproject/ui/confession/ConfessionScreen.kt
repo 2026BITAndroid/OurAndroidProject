@@ -4,22 +4,27 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import com.YanandWang.ourandroidproject.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -67,8 +72,19 @@ fun ConfessionScreen(onBack: () -> Unit) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .background(Color(0xFFF5F0E6))
         ) {
+            Image(
+                painter = painterResource(id = R.drawable.confession_bg),
+                contentDescription = "背景图",
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop,
+                alpha = 0.9f
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color(0xFFF5F0E6).copy(alpha = 0.15f))
+            )
             if (showHistory) {
                 // 历史记录界面
                 LazyColumn(
@@ -102,11 +118,20 @@ fun ConfessionScreen(onBack: () -> Unit) {
                         verticalArrangement = Arrangement.Center
                     ) {
                         item {
-                            Text(
-                                text = "问题 ${currentIndex + 1}/3",
-                                fontSize = 18.sp,
-                                color = Color.Gray
-                            )
+                            Box(
+                                modifier = Modifier
+                                    .background(
+                                        color = Color(0xFF8B5A2B),
+                                        shape = RoundedCornerShape(12.dp)
+                                    )
+                                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                            ) {
+                                Text(
+                                    text = "问题 ${currentIndex + 1}/3",
+                                    fontSize = 18.sp,
+                                    color = Color.White
+                                )
+                            }
                             Spacer(modifier = Modifier.height(16.dp))
                             Text(
                                 text = currentQuestion.question,
@@ -145,12 +170,22 @@ fun ConfessionScreen(onBack: () -> Unit) {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        Text(
-                            text = "今日忏悔结束~",
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color(0xFF8B5A2B)
-                        )
+                        // ========== 修改：今日忏悔结束加背景框 ==========
+                        Box(
+                            modifier = Modifier
+                                .background(
+                                    color = Color(0xFF8B5A2B),
+                                    shape = RoundedCornerShape(12.dp)
+                                )
+                                .padding(horizontal = 20.dp, vertical = 12.dp)
+                        ) {
+                            Text(
+                                text = "今日忏悔结束~",
+                                fontSize = 24.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color.White
+                            )
+                        }
                         Spacer(modifier = Modifier.height(48.dp))
 
                         Box(
@@ -164,11 +199,21 @@ fun ConfessionScreen(onBack: () -> Unit) {
                         }
 
                         Spacer(modifier = Modifier.height(16.dp))
-                        Text(
-                            text = "点击屏幕敲击木鱼",
-                            fontSize = 16.sp,
-                            color = Color.Gray
-                        )
+                        // ========== 修改：敲击提示加背景框 ==========
+                        Box(
+                            modifier = Modifier
+                                .background(
+                                    color = Color(0xFF8B5A2B),
+                                    shape = RoundedCornerShape(12.dp)
+                                )
+                                .padding(horizontal = 16.dp, vertical = 8.dp)
+                        ) {
+                            Text(
+                                text = "点击屏幕敲击木鱼",
+                                fontSize = 16.sp,
+                                color = Color.White
+                            )
+                        }
                     }
                 }
             }

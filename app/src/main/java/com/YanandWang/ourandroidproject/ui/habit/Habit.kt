@@ -8,5 +8,6 @@ data class Habit(
     val totalDays: Int = 0,
     val currentStreak: Int = 0,
     val maxStreak: Int = 0,
-    val lastCheckInDate: LocalDate? = null
+    val lastCheckInDate: LocalDate? = null,
+    val checkInDates: List<LocalDate> = emptyList()
 )
